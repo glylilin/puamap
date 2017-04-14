@@ -1,11 +1,8 @@
 <?php
 return array (
 		// '配置项'=>'配置值'
-		//'配置项'=>'配置值'
 		'DEFAULT_THEME' =>'default',
 		'TMPL_TEMPLATE_SUFFIX'=>'.html',
-		//'LAYOUT_ON'=>true,
-		'LAYOUT_NAME'=>'main',//模板定义
 		'TMPL_LAYOUT_ITEM'=>'{__REPLACE__}',//模板中的 替换内容
 		//变量的左右定界符
 		'TMPL_L_DELIM'          =>  '<{',            // 模板引擎普通标签开始标记
@@ -32,5 +29,9 @@ return array (
 		//'LANG_LIST'        => 'zh-cn', // 允许切换的语言列表 用逗号分隔
 		//'VAR_LANGUAGE'     => 'l', // 默认语言切换变量
 		'DEFAULT_LANG'     => 'zh-cn',
+        'TOKEN_ON'=>true,
+        'TOKEN_NAME'=>'__hash__',
+        'TOKEN_TYPE'=>'md5',
+        'TOKEN_RESET'=>true,
 		
 );

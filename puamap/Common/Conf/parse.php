@@ -6,9 +6,10 @@ return array (
 				'__CSS__' => __ROOT__ . '/Public/static/common/css',
 				'__JS__' => __ROOT__ . '/Public/static/common/js',
 				// 课程配置
-				'__OIMAGES__' => __ROOT__ . '/Public/static/course/images',
-				'__OCSS__' => __ROOT__ . '/Public/static/course/css',
-				'__OJS__' => __ROOT__ . '/Public/static/course/js' 
+				'__AIMAGES__' => __ROOT__ . '/Public/static/admin/images',
+				'__ACSS__' => __ROOT__ . '/Public/static/admin/css',
+				'__AJS__' => __ROOT__ . '/Public/static/admin/js',
+		        '__APLUGINS__'=>__ROOT__ . '/Public/static/admin/plugins'
 		),
 		'PAGESIZE'=>15,
 		'CDN_HOST'=>"http://sitecdn.puamap.com",
