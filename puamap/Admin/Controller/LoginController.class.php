@@ -5,8 +5,8 @@ class LoginController extends Controller{
     public function _initialize(){
         layout(false);
     }
+    //登录页面
     public function index(){
-       
         $message = "";
         if(IS_POST){
            $data = $_POST;
@@ -20,5 +20,15 @@ class LoginController extends Controller{
         }
        $this->assign('message',$message);
        $this->display();
+    }
+    /**
+     * 退出登录
+     */
+    public function logout(){
+    	session('auth',null);
+    	session(null); //清空当前的session
+    	session('[destroy]'); // 销毁session
+    	$this->success(L("LOGOUT_SUCCESS"),'/admin');
+    	exit();
     }
 }
