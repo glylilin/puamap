@@ -533,8 +533,8 @@ a cite {
 }
 
 .layui-form-label {
-	float: left;
-	display: block;
+	 float: left; 
+	display: inline-block;
 	padding: 9px 15px;
 	width: 160px;
 	font-weight: 400;
@@ -551,7 +551,8 @@ a cite {
 }
 
 .layui-input-block {
-	margin-left: 190px;
+	margin-left: 190px; 
+	display:block;
 	min-height: 36px
 }
 

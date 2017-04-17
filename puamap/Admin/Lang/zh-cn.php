@@ -13,6 +13,8 @@ return array(
 	'SETTING'=>"设置",
 	'LOCK_SCREEN'=>'锁屏',
 	'LOGOUT'=>"注销",
-	'LOGOUT_SUCCESS'=>'退出成功'
+	'LOGOUT_SUCCESS'=>'退出成功',
+    'OPERATION_FAILED'=>'操作失败',
+    'OPERATION_SUCCESS'=>'操作成功'
     
 );

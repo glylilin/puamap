@@ -11,17 +11,28 @@ class SettingLogic extends Model{
 			return false;
 		}
 		$setting_model = D("Setting");
+
 		foreach($data as $k=>$v){
 			$temp = array(
-				'title'=>filterString($k),
-				'desc'=>filterString($v)
+				'var'=>filterString($k),
+				'value'=>filterString($v)
 			);
-			if(!$setting_model->addSetting($temp)){
-				return false;
-			}
-			C(strtoupper($temp['title']),$temp['desc']);
+			$setting_model->addSetting($temp);
 		}
+		$this->cacheAllLogic();
 		return true;
 	}
 	
+	public function  cacheAllLogic(){
+	    $config = $this->select();
+	    if (is_array($config)) {
+	        $config_data = array();
+	        foreach ($config as $k=>$v) {
+	            $v['var'] = strtoupper($v['var']);
+	            $config_data[$v['var']] = $v['value'];
+	        }
+ 	        return setCache('params', $config_data, ALL_PARAMS_PATH);//写入配置缓存文件
+	    }
+	    return false;
+	}
 }

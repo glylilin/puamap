@@ -19,7 +19,7 @@ return array (
 		'URL_MODULE_MAP' => array (//相当于给模块取一个别名
 				'admin' => 'Admin' 
 		),
-		'LOAD_EXT_CONFIG' => 'db,cache,parse',
+		'LOAD_EXT_CONFIG' => 'db,cache,parse,params',
 		//自定义标签
 		'APP_AUTOLOAD_PATH'     =>"@.TagLib",
 		//格外标签加载
@@ -32,6 +32,5 @@ return array (
         'TOKEN_ON'=>true,
         'TOKEN_NAME'=>'__hash__',
         'TOKEN_TYPE'=>'md5',
-        'TOKEN_RESET'=>true,
-		
+        'TOKEN_RESET'=>true,   
 );

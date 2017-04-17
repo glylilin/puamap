@@ -10,10 +10,10 @@ class SettingModel extends Model{
 		if(empty($data)){
 			return false;
 		}
-		if($this->getSetingByTitle($data['title'])){
-			$this->where(array('title'=>$data['title']))->save(array('desc'=>$data['desc']));
+		if($this->getSetingByTitle($data['var'])){
+			$this->where(array('var'=>$data['var']))->save(array('value'=>$data['value']));
 		}else{
-			$this->add(array('title'=>$data['title'],'desc'=>$data['desc']));
+			$this->add(array('var'=>$data['var'],'value'=>$data['value']));
 		}
 		return true;
 	}
@@ -21,6 +21,6 @@ class SettingModel extends Model{
 	 * 根据title设置获取内容
 	 */
 	public function getSetingByTitle($title){
-		return $this->where(array('title'=>$title))->find();
+		return $this->where(array('var'=>$title))->find();
 	}
 }
