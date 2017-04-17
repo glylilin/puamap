@@ -9,8 +9,6 @@ class FriendLinkLogic extends Model{
         $res['status'] = false;
         $friend_link_model =  D("FriendLink");
         if($friend_link_model->create($data)){
-            var_dump($friend_link_model);
-            exit();
             if($friend_link_model->addLink($data)){
                 $res['status'] = true;
             }else{
