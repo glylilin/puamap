@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -10,9 +10,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
-<link rel="stylesheet" href="__APLUGINS__/layui/css/layui.css"
+<link rel="stylesheet" href="/Public/static/admin/plugins/layui/css/layui.css"
 	media="all" />
-<link rel="stylesheet" href="__ACSS__/global.css" media="all">
+<link rel="stylesheet" href="/Public/static/admin/css/global.css" media="all">
 <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 
 </head>
@@ -23,44 +23,44 @@
 			<div class="layui-main">
 				<div class="admin-login-box">
 					<a class="logo" style="left: 0;" href="#"> <span
-						style="font-size: 22px;"><{:L('WELCOME')}></span>
+						style="font-size: 22px;"><?php echo L('WELCOME');?></span>
 					</a>
 					<div class="admin-side-toggle">
 						<i class="fa fa-bars" aria-hidden="true"></i>
 					</div>
 				</div>
 				<ul class="layui-nav admin-header-item">
-					<li class="layui-nav-item"><a href="javascript:;"><{:L("CLEAN_CACHE")}></a></li>
-					<li class="layui-nav-item"><a href="javascript:;"><{:L("LOOK_WEBSITE")}></a></li>
-					<li class="layui-nav-item" id="video1"><a href="javascript:;"><{:L('VIDEO')}></a>
+					<li class="layui-nav-item"><a href="javascript:;"><?php echo L("CLEAN_CACHE");?></a></li>
+					<li class="layui-nav-item"><a href="javascript:;"><?php echo L("LOOK_WEBSITE");?></a></li>
+					<li class="layui-nav-item" id="video1"><a href="javascript:;"><?php echo L('VIDEO');?></a>
 					</li>
 					<li class="layui-nav-item"><a href="javascript:;"
-						class="admin-header-user"> <img src="__AIMAGES__/0.jpg" /> <span><{$Think.session.auth.username}></span>
+						class="admin-header-user"> <img src="/Public/static/admin/images/0.jpg" /> <span><?php echo ($_SESSION['auth']['username']); ?></span>
 					</a>
 						<dl class="layui-nav-child">
 							<dd>
 								<a href="javascript:;"><i class="fa fa-user-circle"
-									aria-hidden="true"></i> <{:L('PERSONAL_INFOMATION')}></a>
+									aria-hidden="true"></i> <?php echo L('PERSONAL_INFOMATION');?></a>
 							</dd>
 							<dd>
 								<a href="javascript:;"><i class="fa fa-gear"
-									aria-hidden="true"></i> <{:L("SETTING")}></a>
+									aria-hidden="true"></i> <?php echo L("SETTING");?></a>
 							</dd>
 							<dd id="lock">
 								<a href="javascript:;"> <i class="fa fa-lock"
 									aria-hidden="true"
-									style="padding-right: 3px; padding-left: 1px;"></i> <{:L("LOCK_SCREEN")}> (Alt+L)
+									style="padding-right: 3px; padding-left: 1px;"></i> <?php echo L("LOCK_SCREEN");?> (Alt+L)
 								</a>
 							</dd>
 							<dd>
-								<a href="<{:U('/admin/login/logout')}>"><i class="fa fa-sign-out"
-									aria-hidden="true"></i> <{:L('LOGOUT')}></a>
+								<a href="<?php echo U('/admin/login/logout');?>"><i class="fa fa-sign-out"
+									aria-hidden="true"></i> <?php echo L('LOGOUT');?></a>
 							</dd>
 						</dl></li>
 				</ul>
 				<ul class="layui-nav admin-header-item-mobile">
-					<li class="layui-nav-item"><a href="<{:U('/admin/login/logout')}>"><i
-							class="fa fa-sign-out" aria-hidden="true"></i> <{:L('LOGOUT')}></a></li>
+					<li class="layui-nav-item"><a href="<?php echo U('/admin/login/logout');?>"><i
+							class="fa fa-sign-out" aria-hidden="true"></i> <?php echo L('LOGOUT');?></a></li>
 				</ul>
 			</div>
 		</div>
@@ -79,7 +79,7 @@
 				<div class="layui-tab-content"
 					style="min-height: 150px; padding: 5px 0 0 0;">
 					<div class="layui-tab-item layui-show">
-						<iframe src="<{:U('/admin/index/main')}>"></iframe>
+						<iframe src="<?php echo U('/admin/index/main');?>"></iframe>
 					</div>
 				</div>
 			</div>
@@ -87,7 +87,7 @@
 		<div class="layui-footer footer footer-demo" id="admin-footer">
 			<div class="layui-main">
 				<p>
-					<{:C("WEBCOPY")}>
+					<?php echo C("WEBCOPY");?>
 				</p>
 			</div>
 		</div>
@@ -109,7 +109,7 @@
 			</script>
 		<!--锁屏模板 end -->
 
-		<script type="text/javascript" src="__APLUGINS__/layui/layui.js"></script>
+		<script type="text/javascript" src="/Public/static/admin/plugins/layui/layui.js"></script>
 		<script>
 		var navs = [{
 			"title": "基本元素",
@@ -218,7 +218,7 @@
 		}];
 		</script>
 		
-		<script src="__AJS__/index.js"></script>
+		<script src="/Public/static/admin/js/index.js"></script>
 		<script>
 				layui.use('layer', function() {
 					var $ = layui.jquery,

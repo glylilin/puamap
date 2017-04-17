@@ -13,9 +13,9 @@
 <body>
 	<div class="admin-main">
 		<blockquote class="layui-elem-quote">
-			<a href="/admin/system/addFriendLink"
+			<a href="javascript:;"
 				class="layui-btn layui-btn-small" id="add"> <i
-				class="layui-icon">&#xe608;</i> 友情链接添加
+				class="layui-icon">&#xe608;</i> 添加导航
 			</a>
 		</blockquote>
 		<fieldset class="layui-elem-field">
@@ -67,7 +67,32 @@
 				var $ = layui.jquery,
 					laypage = layui.laypage,
 					layer = parent.layer === undefined ? layui.layer : parent.layer;
-		
+				$('#add').on('click', function() {
+					$.get('/admin/system/addmenu', null, function(form) {
+						layer.open({
+							type: 1,
+							title: '添加导航',
+							content:form,
+							btn: ['保存', '取消'],
+							area: ['400px', '200px'],
+							maxmin: true,
+							yes:function(index) {
+								
+							},
+							full: function(elem) {
+								var win = window.top === window.self ? window : parent.window;
+								$(win).on('resize', function() {
+									var $this = $(this);
+									elem.width($this.width()).height($this.height()).css({
+										top: 0,
+										left: 0
+									});
+									elem.children('div.layui-layer-content').height($this.height() - 95);
+								});
+							}
+						});
+					});
+				});
 
 				//page
 				laypage({

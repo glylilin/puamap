@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2017-04-17 18:25:07
+Date: 2017-04-17 23:17:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,20 +48,21 @@ CREATE TABLE `puamap_friend_link` (
   `add_time` int(11) unsigned DEFAULT NULL,
   `is_use` int(1) unsigned DEFAULT '1' COMMENT '1表示启用0比启用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of puamap_friend_link
 -- ----------------------------
-INSERT INTO `puamap_friend_link` VALUES ('1', '百度', 'http://www.baidu.com', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('2', '优酷', 'http://www.youku.com/', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('3', '阿里巴巴', 'https://www.1688.com/', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('4', '腾讯', 'http://www.qq.com', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('5', '京东', 'http://www.jd.com', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('6', '坏男孩', 'http://www.puahome.com', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('7', '舞步学院', 'http://www.wubupua.com', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('8', '360', 'http://www.360.com', null, '1');
-INSERT INTO `puamap_friend_link` VALUES ('9', '美丽说', 'http://www.meili.com', null, '1');
+INSERT INTO `puamap_friend_link` VALUES ('1', '百度', 'http://www.baidu.com', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('2', '优酷', 'http://www.youku.com/', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('3', '阿里巴巴', 'https://www.1688.com/', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('4', '腾讯', 'http://www.qq.com', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('6', '坏男孩', 'http://www.puahome.com', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('7', '舞步学院', 'http://www.wubupua.com', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('8', '360', 'http://www.360.com', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('9', '美丽说', 'http://www.meili.com', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('10', '奇云测', 'http://ce.cloud.360.cn/', '1492435838', '1');
+INSERT INTO `puamap_friend_link` VALUES ('11', '爱奇艺', 'http://www.iqiyi.com/', '1492435838', '1');
 
 -- ----------------------------
 -- Table structure for `puamap_setting`

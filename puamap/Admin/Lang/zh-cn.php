@@ -15,6 +15,7 @@ return array(
 	'LOGOUT'=>"注销",
 	'LOGOUT_SUCCESS'=>'退出成功',
     'OPERATION_FAILED'=>'操作失败',
-    'OPERATION_SUCCESS'=>'操作成功'
+    'OPERATION_SUCCESS'=>'操作成功',
+	'FRIEND_LINK_EXISTS'=>'友链已经被添加'
     
 );

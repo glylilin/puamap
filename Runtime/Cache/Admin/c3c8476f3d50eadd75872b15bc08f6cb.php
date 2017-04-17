@@ -23,26 +23,23 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">友情链接名称</label>
 				<div class="layui-input-block">
-					<input type="text" name="info[name]" autocomplete="off" placeholder="友情链接名称" lay-verify="required" class="layui-input" value="<?php echo ($data["name"]); ?>">
+					<input type="text" name="info[name]" autocomplete="off" placeholder="友情链接名称" lay-verify="required" class="layui-input" value="">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">友情链接地址</label>
 				<div class="layui-input-block">
-					<input type="text" name="info[link]" autocomplete="off" placeholder="友情链接地址" class="layui-input" lay-verify="url" value="<?php echo ($data["link"]); ?>">
+					<input type="text" name="info[link]" autocomplete="off" placeholder="友情链接地址" class="layui-input" lay-verify="url" value="">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">是否启用</label>
 				<div class="layui-input-block">
-				<?php if($data['is_use']): ?><input type="checkbox" checked="" name="info[is_use]" value='1' lay-skin="switch" title="开关">
-				<?php else: ?>
-					<input type="checkbox" name="info[is_use]" value='1' lay-skin="switch" title="开关"><?php endif; ?>
+					<input type="checkbox" checked="" name="info[is_use]" value='1' lay-skin="switch" title="开关">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<input type="hidden" name="info[id]" value='<?php echo ($data["id"]); ?>' lay-skin="switch" title="开关">
 					<button class="layui-btn" lay-submit="" lay-filter="add">立即提交</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
