@@ -67,10 +67,7 @@
 		</div>
 		<script type="text/javascript" src="/Public/static/admin/plugins/layui/layui.js"></script>
 		<script>
-			layui
-					.use(
-							[ 'form', 'layedit', 'laydate', 'layer' ],
-							function() {
+			layui.use([ 'form', 'layedit', 'laydate', 'layer' ],function() {
 								var form = layui.form(), layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
 								if ("<?php echo ($message); ?>") {
 									layer.msg("<?php echo ($message); ?>");
