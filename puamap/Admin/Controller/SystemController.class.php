@@ -86,22 +86,71 @@ class SystemController extends BaseController{
      * 删除友链
      */
     public function delFriendLink(){
-    	$id = I("get.id",0,'intval');
-    	$friend_link_service = D('FriendLink','Service');
-    	if($friend_link_service->where(array('id'=>$id))->delete()){
-    		$this->success(L('OPERATION_SUCCESS'),'/admin/system/friendlink');exit();
+    	$res['status'] = false;
+    	if(IS_AJAX){
+    	    $id = I("post.id",0,'intval');
+    	    $friend_link_service = D('FriendLink','Service');
+    	    if($friend_link_service->where(array('id'=>$id))->delete()){
+    	        $res['status'] = true;
+    	    }else{
+    	        $res['message'] = L('OPERATION_FAILED');
+    	    }
     	}else{
-    		$this->error(L('OPERATION_FAILED'),'/admin/system/friendlink');exit();
+    	    $res['message'] = L('ILLEGAL_OPERATION');
     	}
+    	
+    	$this->ajaxReturn($res);
     }
     /**
      * 导航列表
      */
     public function menu(){
-    	$this->display();
+    	$page = I("get.page",1,'intval');
+        $menu_service =  D("Menu",'Service');
+        $data = $menu_service->getPageInfoService($page);
+        $this->assign('data',$data);
+        $this->assign('page',$page);
+        $this->display();
     }
     
     public function addmenu(){
+        $message = "";
+        $id = I("get.id",0,'intval');
+        $menu_service  = D('Menu',"Service");
+        if(IS_POST){
+            $data = I('post.info',array());
+            $data['is_use'] = isset($data['is_use']) ? intval($data['is_use']) : 0;
+            $data[C("TOKEN_NAME")] = I("post.".C("TOKEN_NAME"),"",'trim');
+            $id = $id ? $id : $data['id'];
+            $result = $menu_service->addMenuService($data);
+            if($result['status']){
+                $this->success(L('OPERATION_SUCCESS'),'/admin/system/menu');exit();
+            }
+            $message = $result['message'];
+        }
+        $data = array();
+        if($id){
+            $data = $menu_service->where(array('id'=>$id))->find();
+        }
+        $this->assign('message',$message);
+        $this->assign('data',$data);
     	$this->display();
+    }
+    
+    public function delMenu(){
+        $res['status'] = false;
+        if(IS_AJAX){
+            $id = I("post.id",0,'intval');
+            $menu_service = D('Menu','Service');
+            if($menu_service->where(array('id'=>$id))->delete()){
+                $res['status'] = true;
+            }else{
+                $res['message'] = L('OPERATION_FAILED');
+            }
+        }else{
+            $res['message'] = L('ILLEGAL_OPERATION');
+        }
+        
+       $this->ajaxReturn($res);
     }
 }

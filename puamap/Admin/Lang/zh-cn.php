@@ -16,6 +16,15 @@ return array(
 	'LOGOUT_SUCCESS'=>'退出成功',
     'OPERATION_FAILED'=>'操作失败',
     'OPERATION_SUCCESS'=>'操作成功',
-	'FRIEND_LINK_EXISTS'=>'友链已经被添加'
+	'FRIEND_LINK_EXISTS'=>'友链已经被添加',
+    'MENU_NAME_REQUIRED'=>'导航名称必填',
+    'MENU_LINK_REQUIRED'=>'导航地址必填',
+    'MENU_URL_FORMAT_ERROR'=>"导航地址格式错误",
+    'MENU_EXISTS'=>'该导航已被添加',
+    'ILLEGAL_OPERATION'=>"非法操作",
+    'PLEASE_UPLOAD_PICTURES'=>'请上传图片',
+    'PICTURE_FORMAT_ERROR'=>'上传图片格式错误',
+    'PICTURE_SIZE_BEYOND_LIMIT'=>"图片大小超出限制",
+    'PICTURE_DOES_NOT_EXIST'=>'图片上传失败'
     
 );

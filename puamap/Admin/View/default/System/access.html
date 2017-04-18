@@ -27,6 +27,18 @@
 				</div>
 			</div>
 			<div class="layui-form-item">
+				<label class="layui-form-label">图片宽高比(IMAGES_RATIO)</label>
+				<div class="layui-input-block">
+					<input type="text" name="info[images_ratio]" autocomplete="off" placeholder="图片宽高比" class="layui-input" lay-verify="required" value="<{:C('IMAGES_RATIO')}>">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">图片大小(IMAGES_SIZE)单位M</label>
+				<div class="layui-input-block">
+					<input type="text" name="info[images_size]" autocomplete="off" placeholder="图片大小" class="layui-input" lay-verify="required" value="<{:C('IMAGES_SIZE')}>">
+				</div>
+			</div>
+			<div class="layui-form-item">
 				<label class="layui-form-label">图片路径(UPLOAD_DIR)</label>
 				<div class="layui-input-block">
 					<input type="text" name="info[upload_dir]" autocomplete="off" placeholder="请输入图片路径" class="layui-input"  value="<{:C('UPLOAD_DIR')}>">

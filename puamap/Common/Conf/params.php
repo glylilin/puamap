@@ -13,7 +13,7 @@ return array(
 'WEBTEL'=>'13408187117',
 'ADDRESS'=>'',
 'IMAGES_ALLOWEXT'=>'jpg|jpeg|gif|png',
-'UPLOAD_DIR'=>'Public/uploads',
+'UPLOAD_DIR'=>'Public/uploads/',
 'THUMB_WIDTH'=>'300',
 'THUMB_HEIGHT'=>'200',
 'IMAGE_MINWIDTH'=>'100',
@@ -23,4 +23,8 @@ return array(
 'UPLOAD_WATER_PLACE'=>'1',
 'IS_CUT'=>'1',
 'WATER_ISWATERMARK'=>'1',
+'NAME'=>'dsDS',
+'LINK'=>'DSA',
+'IMAGES_RATIO'=>'2:1',
+'IMAGES_SIZE'=>'2M',
 );

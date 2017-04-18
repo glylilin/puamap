@@ -45,7 +45,7 @@
 							<td><a href="<?php echo ($id["link"]); ?>" target="_blank"
 								class="layui-btn layui-btn-normal layui-btn-mini">预览</a> <a
 								href="/admin/system/addfriendlink?id=<?php echo ($id["id"]); ?>" class="layui-btn layui-btn-mini">编辑</a>
-								<a href="/admin/system/delfriendlink?id=<?php echo ($id["id"]); ?>" data-id="1" data-opt="del"
+								<a href="JavaScript:;" data-id="<?php echo ($id["id"]); ?>" data-opt="del"
 								class="layui-btn layui-btn-danger layui-btn-mini">删除</a></td>
 						</tr><?php endforeach; endif; ?>
 					</tbody>
@@ -83,7 +83,27 @@
 						}
 					}
 				});
-
+				$('.layui-btn-danger').on('click',function(){
+					var menu_name = $(this).parents('tr').find('td').eq(0).text();
+					var id = $(this).attr("data-id");
+					var This = $(this);
+					layer.confirm("你确定删除友情链接"+menu_name, {icon: 3, title:'提示信息'}, function(index){
+						  $.ajax({
+							  url:"/admin/system/delfriendlink",
+							  type:"post",
+							  data:{'id':id},
+							  dataType:"JSON",
+							  success:function(mes){
+								  if(mes.status){
+									  $(This).parents('tr').remove();
+								  }else{
+									  layer.msg(mes.message);
+								  }
+							  }
+						  });
+						  layer.close(index);
+					});
+				});
 			});
 			
 		</script>

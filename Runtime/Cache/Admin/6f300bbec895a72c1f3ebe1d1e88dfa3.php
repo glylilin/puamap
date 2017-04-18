@@ -19,29 +19,33 @@
 	<div style="margin: 15px;">
 		<fieldset class="layui-elem-field layui-field-title"
 			style="margin-top: 20px;">
-			<legend>导航添加</legend>
+			<legend>BANNER添加</legend>
 		</fieldset>
 
 		<div style="margin: 15px;">
 			<form class="layui-form" action="/admin/system/addmenu" method='post'>
 				<div class="layui-form-item">
-					<label class="layui-form-label" style="width: 60px;">导航名称</label>
-					<div class="layui-input-block" style="margin-left: 90px;">
+					<label class="layui-form-label" style="width: 80px;">banner名称</label>
+					<div class="layui-input-block" style="margin-left: 110px;">
 						<input type="text" name="info[menu_name]" autocomplete="off"
 							placeholder="导航名称" lay-verify="required" class="layui-input"
 							value="<?php echo ($data["menu_name"]); ?>">
 					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label" style="width: 60px;">导航地址</label>
-					<div class="layui-input-block" style="margin-left: 90px;">
+					<label class="layui-form-label" style="width: 80px;">图片上传(<?php echo C("IMAGES_RATIO");?>)</label>
+					<input type="file" name="file" lay-ext="<?php echo C('IMAGES_ALLOWEXT');?>" lay-type="file" lay-title="请上传一张图片吧亲" lay-verify="required" class="layui-upload-file"> 
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label" style="width: 80px;">banner地址</label>
+					<div class="layui-input-block" style="margin-left: 110px;">
 						<input type="text" name="info[menu_link]" autocomplete="off"
 							placeholder="导航地址" class="layui-input" lay-verify="url" value="<?php echo ($data["menu_link"]); ?>">
 					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label" style="width: 60px;">是否启用</label>
-					<div class="layui-input-block" style="margin-left: 90px;">
+					<label class="layui-form-label" style="width: 80px;">是否启用</label>
+					<div class="layui-input-block" style="margin-left: 110px;">
 						<?php if($data['is_use']): ?><input type="checkbox" checked="" name="info[is_use]" value='1' lay-skin="switch" title="开关">
 						<?php else: ?>
 						<input type="checkbox" name="info[is_use]" value='1' lay-skin="switch" title="开关"><?php endif; ?>
@@ -49,8 +53,8 @@
 				</div>
 					<div class="layui-form-item">
 					<div class="layui-inline">
-						<label class="layui-form-label"  style="width: 60px;">排序</label>
-						<div class="layui-input-inline" style="width: 90px;">
+						<label class="layui-form-label"  style="width: 80px;">排序</label>
+						<div class="layui-input-inline" style="width: 110px;">
 							<input type="text" name="info[sort]" autocomplete="off" class="layui-input" value='<?php echo ($data["sort"]); ?>'>
 						</div>
 					</div>
@@ -67,10 +71,7 @@
 		</div>
 		<script type="text/javascript" src="/Public/static/admin/plugins/layui/layui.js"></script>
 		<script>
-			layui
-					.use(
-							[ 'form', 'layedit', 'laydate', 'layer' ],
-							function() {
+			layui.use([ 'form','layer','upload'],function() {
 								var form = layui.form(), layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
 								if ("<?php echo ($message); ?>") {
 									layer.msg("<?php echo ($message); ?>");
@@ -79,6 +80,12 @@
 								form.on('submit(add)', function(data) {
 									return true;
 								});
+								layui.upload({
+									  url: '/admin/attachment/upload',
+									  success: function(res){
+									    console.log(res); //上传成功返回值，必须为json格式
+									  }
+								});      
 							});
 		</script>
 </body>
