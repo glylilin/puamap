@@ -25,6 +25,8 @@ return array(
     'PLEASE_UPLOAD_PICTURES'=>'请上传图片',
     'PICTURE_FORMAT_ERROR'=>'上传图片格式错误',
     'PICTURE_SIZE_BEYOND_LIMIT'=>"图片大小超出限制",
-    'PICTURE_DOES_NOT_EXIST'=>'图片上传失败'
+    'PICTURE_DOES_NOT_EXIST'=>'图片不存在',
+	'WIDTH_OUT_OF_PROPORTION'=>"宽度超出比例10px",
+	'HEIGHT_OUT_OF_PROPORTION'=>'高度超出比例10px'
     
 );

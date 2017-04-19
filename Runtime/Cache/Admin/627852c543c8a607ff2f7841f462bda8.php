@@ -15,7 +15,7 @@
 		<blockquote class="layui-elem-quote">
 			<a href="/admin/system/addmenu"
 				class="layui-btn layui-btn-small" id="add"> <i
-				class="layui-icon">&#xe608;</i> 添加导航
+				class="layui-icon">&#xe608;</i> 添加轮播图
 			</a>
 		</blockquote>
 		<fieldset class="layui-elem-field">

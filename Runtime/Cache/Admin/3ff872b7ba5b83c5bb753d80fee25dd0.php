@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label class="layui-form-label">缩略图是否开启</label>
+				<label class="layui-form-label">缩略图是否开启(IS_CUT)</label>
 				<div class="layui-input-block">
 					<?php if(C('IS_CUT')): ?><input type="checkbox" checked="" name="info[is_cut]" value='1' lay-skin="switch" title="开关">
 					<?php else: ?>
@@ -66,7 +66,7 @@
 			</div>
 			
 			<div class="layui-form-item">
-				<label class="layui-form-label">水印是否开启</label>
+				<label class="layui-form-label">水印是否开启(WATER_ISWATERMARK)</label>
 				<div class="layui-input-block">
 					<?php if(C('WATER_ISWATERMARK')): ?><input type="checkbox" checked="" name="info[water_iswatermark]" value='1' lay-skin="switch" title="开关">
 					<?php else: ?>
@@ -88,31 +88,31 @@
 			</div>
 			
 			<div class="layui-form-item">
-				<label class="layui-form-label">水印透明度</label>
+				<label class="layui-form-label">水印透明度(WATER_TRANS)</label>
 				<div class="layui-input-block" style="width:200px;">
 					<input type="text" name="info[water_trans]" autocomplete="off" placeholder="水印透明度" class="layui-input" value="<?php echo C('WATER_TRANS');?>">
 				</div>
 			</div>
 			
 			<div class="layui-form-item">
-				<label class="layui-form-label">水印图片路径</label>
+				<label class="layui-form-label">水印图片路径(WATER_PATH)</label>
 				<div class="layui-input-block" style="width:500px;">
 					<input type="text" name="info[water_path]" autocomplete="off" placeholder="水印透明度" class="layui-input" value="<?php echo C('WATER_PATH');?>">
 				</div>
 			</div>
 
 				<div class="layui-form-item">
-					<label class="layui-form-label">水印添加位置</label>
+					<label class="layui-form-label">水印添加位置(UPLOAD_WATER_PLACE)</label>
 					<div class="layui-input-block">
-						<input type="radio" name="info[upload_water_place]" value="1" title="上左" checked="">
-						<input type="radio" name="info[upload_water_place]" value="2" title="上中">
-						<input type="radio" name="info[upload_water_place]" value="3" title="上右"><br/>
-						<input type="radio" name="info[upload_water_place]" value="4" title="中左">
-						<input type="radio" name="info[upload_water_place]" value="5" title="正中">
-						<input type="radio" name="info[upload_water_place]" value="6" title="中右"><br/>
-						<input type="radio" name="info[upload_water_place]" value="7" title="下左">
-						<input type="radio" name="info[upload_water_place]" value="8" title="下中">
-						<input type="radio" name="info[upload_water_place]" value="9" title="下右">
+						<input type="radio" name="info[upload_water_place]" value="1" title="上左" <?php if((C('UPLOAD_WATER_PLACE') == 1) or !C('UPLOAD_WATER_PLACE')): ?>checked=""<?php endif; ?> >
+						<input type="radio" name="info[upload_water_place]" value="2" title="上中" <?php if(C('UPLOAD_WATER_PLACE') == 2): ?>checked=""<?php endif; ?>>
+						<input type="radio" name="info[upload_water_place]" value="3" title="上右" <?php if(C('UPLOAD_WATER_PLACE') == 3): ?>checked=""<?php endif; ?>><br/>
+						<input type="radio" name="info[upload_water_place]" value="4" title="中左" <?php if(C('UPLOAD_WATER_PLACE') == 4): ?>checked=""<?php endif; ?>>
+						<input type="radio" name="info[upload_water_place]" value="5" title="正中" <?php if(C('UPLOAD_WATER_PLACE') == 5): ?>checked=""<?php endif; ?>>
+						<input type="radio" name="info[upload_water_place]" value="6" title="中右" <?php if(C('UPLOAD_WATER_PLACE') == 6): ?>checked=""<?php endif; ?>><br/>
+						<input type="radio" name="info[upload_water_place]" value="7" title="下左" <?php if(C('UPLOAD_WATER_PLACE') == 7): ?>checked=""<?php endif; ?>>
+						<input type="radio" name="info[upload_water_place]" value="8" title="下中" <?php if(C('UPLOAD_WATER_PLACE') == 8): ?>checked=""<?php endif; ?>>
+						<input type="radio" name="info[upload_water_place]" value="9" title="下右" <?php if(C('UPLOAD_WATER_PLACE') == 9): ?>checked=""<?php endif; ?>>
 						
 					</div>
 				</div>

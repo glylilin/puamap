@@ -20,11 +20,11 @@ return array(
 'IMAGE_MINHEIGHT'=>'100',
 'WATER_TRANS'=>'50',
 'WATER_PATH'=>'Public/watermark.png',
-'UPLOAD_WATER_PLACE'=>'1',
+'UPLOAD_WATER_PLACE'=>'7',
 'IS_CUT'=>'1',
 'WATER_ISWATERMARK'=>'1',
 'NAME'=>'dsDS',
 'LINK'=>'DSA',
-'IMAGES_RATIO'=>'2:1',
+'IMAGES_RATIO'=>'0',
 'IMAGES_SIZE'=>'2M',
 );
