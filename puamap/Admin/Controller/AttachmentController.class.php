@@ -47,6 +47,6 @@ class AttachmentController extends BaseController{
             return array('status'=>false,'message'=>L("PICTURE_DOES_NOT_EXIST"));
         }
         list($width,$height)= getimagesize($filePath);
-        
+        list($radio_witdh,$radio_height) = explode(":",C("IMAGES_RATIO"));
     }
 }
