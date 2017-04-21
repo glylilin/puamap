@@ -118,15 +118,15 @@
 			"children": [{
 				"title": "轮播图",
 				"icon": "&#xe634;",
-				"href": "admin/index/banner"
+				"href": "/admin/index/banner"
 			}, {
-				"title": "表单",
-				"icon": "&#xe63c;",
-				"href": "form.html"
+				"title": "推荐主题分类",
+				"icon": "&#xe609;",
+				"href": "/admin/index/classify"
 			}, {
-				"title": "表格",
-				"icon": "&#xe63c;",
-				"href": "table.html"
+				"title": "推荐主题",
+				"icon": "&#xe632;",
+				"href": "/admin/index/groom"
 			}, {
 				"title": "导航",
 				"icon": "&#xe609;",

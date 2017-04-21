@@ -19,14 +19,20 @@ return array(
 	'FRIEND_LINK_EXISTS'=>'友链已经被添加',
     'MENU_NAME_REQUIRED'=>'导航名称必填',
     'MENU_LINK_REQUIRED'=>'导航地址必填',
-    'MENU_URL_FORMAT_ERROR'=>"导航地址格式错误",
+    'MENU_URL_FORMAT_ERROR'=>"URL格式错误",
     'MENU_EXISTS'=>'该导航已被添加',
     'ILLEGAL_OPERATION'=>"非法操作",
     'PLEASE_UPLOAD_PICTURES'=>'请上传图片',
     'PICTURE_FORMAT_ERROR'=>'上传图片格式错误',
     'PICTURE_SIZE_BEYOND_LIMIT'=>"图片大小超出限制",
     'PICTURE_DOES_NOT_EXIST'=>'图片不存在',
-	'WIDTH_OUT_OF_PROPORTION'=>"宽度超出比例10px",
-	'HEIGHT_OUT_OF_PROPORTION'=>'高度超出比例10px'
+	'WIDTH_OUT_OF_PROPORTION'=>"宽度超出比例10PX",
+	'HEIGHT_OUT_OF_PROPORTION'=>'高度超出比例10PX',
+    'TITLE_REQUIRED'=>'TITLE必填',
+    'IMAGE_UPLOAD_REQUIRED'=>"图片必须上传",
+    'URL_REQUIRE'=>'URL地址必须填写',
+    'OUT_RANGE'=>"不在范围之内",
+    'CLASSIFY_NAME_REQUIRED'=>'分类名必须填写',
+    'CLASSIFY_EXISIT'=>'分类已经存在'
     
 );

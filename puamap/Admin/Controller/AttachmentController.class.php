@@ -6,24 +6,11 @@ namespace Admin\Controller;
  *
  */
 class AttachmentController extends BaseController{
-    public function upload(){
+    public function uploadBanner(){
         $res['status'] = false;
         if(!isset($_FILES['file']) || empty($_FILES['file'])){
            $res['message'] = L('PLEASE_UPLOAD_PICTURES'); 
         }else{
-            /*$temp_image = $_FILES['file'];
-             $image_allowext = explode("|",C("IMAGES_ALLOWEXT"));
-            $image_allow_size = intval(C("IMAGES_SIZE")) * 1024*1024;
-            $image_type = substr($temp_image['type'],strripos($temp_image['type'],"/")+1);
-            $image_size =$temp_image['size'];
-            if(!in_array($image_type)){
-                $res['message'] = L('PICTURE_FORMAT_ERROR');
-            }elseif($image_allow_size < $image_size){
-                $res['message'] = L('PICTURE_SIZE_BEYOND_LIMIT');
-            }else{
-                
-            } */
-
             $upload = new \Think\Upload();// 实例化上传类
             $upload->maxSize = intval(C("IMAGES_SIZE")) * 1024*1024;
             $upload->exts  = explode("|",C("IMAGES_ALLOWEXT"));// 设置附件上传类型
@@ -66,7 +53,14 @@ class AttachmentController extends BaseController{
 	    if(!$res['status']){
 	       unlink($filePath);
 	    }else{
-	    	$this->makeFilterWaterMark($filePath);
+	    	//$this->makeFilterWaterMark($filePath);banner图不需要水印
+	    	$res['path']=$this->addThumbImage($filePath);
+	    	$attachment_model = D("attachment");
+	    	$data = array(
+	    	    'image_address'=>$file['savepath'].$file['savename'],
+	    	    'add_time'=>time()
+	    	);
+	    	$res['image_id'] = $attachment_model->add($data);
 	    }
         return $res;
     }
@@ -193,9 +187,67 @@ class AttachmentController extends BaseController{
     }
     /**
      * 缩略图
+     * 先等比缩放为原理的四分之一
+     * 在按照输入的规格缩放
      */
-    public function addThumbImage(){
-    	
+    public function addThumbImage($filePath){
+        $path = $filePath;
+        if(file_exists($filePath) && C("IS_CUT")){
+            list($width,$height,$dist_type)= getimagesize($filePath);
+            $thumb_width = $width / 2;
+            $thumb_height = $height / 2;
+            $im = @imagecreatetruecolor($thumb_width, $thumb_height);
+            switch ($dist_type){
+                case 1:
+                    $dist_image = imagecreatefromgif($filePath);
+                    break;
+                case 2:
+                    $dist_image = imagecreatefromjpeg($filePath);
+                    break;
+                case 3:
+                    $dist_image = imagecreatefrompng($filePath);
+                    break;
+                default:
+                    $dist_image = null;
+                    break;
+            }
+            if($im && $dist_image){
+                imagecopyresampled($im,$dist_image,0,0,0,0,$thumb_width,$thumb_height,$width,$height);
+                $ext = substr($filePath,strripos($filePath,"."));
+                $fileBaseName = substr($filePath,0,strripos($filePath,"."));
+                $path = $fileBaseName.".medium".$ext;
+                switch ($dist_type){
+                    case 1:
+                        imagegif($im,$path);
+                        break;
+                    case 2:
+                        imagejpeg($im,$path);
+                        break;
+                    case 3:
+                        imagepng($im,$path);
+                        break;
+                }
+                if(C("THUMB_WIDTH") && C("THUMB_HEIGHT")){
+                    $im = @imagecreatetruecolor(C("THUMB_WIDTH"),C("THUMB_HEIGHT"));
+                    imagecopyresampled($im,$dist_image,0,0,0,0,C("THUMB_WIDTH"),C("THUMB_HEIGHT"),$width,$height);
+                    switch ($dist_type){
+                        case 1:
+                            imagegif($im,$fileBaseName.".small".$ext);
+                            break;
+                        case 2:
+                            imagejpeg($im,$fileBaseName.".small".$ext);
+                            break;
+                        case 3:
+                            imagepng($im,$fileBaseName.".small".$ext);
+                            break;
+                    }
+                }
+                imagedestroy($im);
+                imagedestroy($dist_image);
+            }
+            
+            return $path;
+        }
     }
     
 }
