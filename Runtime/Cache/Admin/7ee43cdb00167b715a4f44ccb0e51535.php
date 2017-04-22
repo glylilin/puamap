@@ -127,18 +127,6 @@
 				"title": "推荐主题",
 				"icon": "&#xe632;",
 				"href": "/admin/index/groom"
-			}, {
-				"title": "导航",
-				"icon": "&#xe609;",
-				"href": "nav.html"
-			}, {
-				"title": "Tab选项卡",
-				"icon": "&#xe62a;",
-				"href": "tab.html"
-			}, {
-				"title": "辅助性元素",
-				"icon": "&#xe60c;",
-				"href": "auxiliar.html"
 			}]
 		}, {
 			"title": "组件",

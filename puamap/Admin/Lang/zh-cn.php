@@ -33,6 +33,9 @@ return array(
     'URL_REQUIRE'=>'URL地址必须填写',
     'OUT_RANGE'=>"不在范围之内",
     'CLASSIFY_NAME_REQUIRED'=>'分类名必须填写',
-    'CLASSIFY_EXISIT'=>'分类已经存在'
+    'CLASSIFY_EXISIT'=>'分类已经存在',
+    'TITLE_EXISIT'=>'标题已经存在',
+    'DESCRIPTION_REQUIRED'=>"描述信息必须填写",
+    'TITLTE_REQUIRED'=>'标题必须填写'
     
 );

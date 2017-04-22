@@ -17,7 +17,7 @@ class BannerModel extends Model{
      */
     public function checkUrl($value){
         $pattren = "/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i";
-        if(!preg_match($value)){
+        if(!preg_match($pattren,$value)){
             return  false;
         }
         return true;

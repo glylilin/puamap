@@ -39,26 +39,9 @@ class BannerLogic extends  Model{
         $banner_model = D("BannerView");
         $data['total'] = ceil($banner_model->getBannerCount() / C("PAGESIZE"));
         if($data['total']){
-            $data['list'] = $this->formatImage($banner_model->getBannerInfo($page,C("PAGESIZE")));
+            $data['list'] = formatLogicImage($banner_model->getBannerInfo($page,C("PAGESIZE")));
         }
         return $data;
     }
-    /**
-     * 图片处理
-     * @param unknown $data
-     */
-    public function formatImage($data){
-        if($data){
-            foreach ($data as $k=>$v){
-                $filepath = C("UPLOAD_DIR").$v['image_address'];
-                if(file_exists($filepath)){
-                    $basename = substr($filepath,0,strripos($filepath,'.'));
-                    $ext = substr($filepath,strripos($filepath,'.'));
-                    $data[$k]['medium']=$basename.".medium".$ext;
-                    $data[$k]['small']=$basename.".small".$ext;
-                }
-            }
-        }
-        return $data;
-    }
+   
 }

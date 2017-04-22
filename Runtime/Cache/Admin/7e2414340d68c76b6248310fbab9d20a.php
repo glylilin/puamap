@@ -10,7 +10,6 @@
 	href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
 <link rel="stylesheet" href="/Public/static/admin/css/table.css" />
 </head>
-
 <body>
 	<div class="admin-main">
 		<blockquote class="layui-elem-quote">
@@ -18,6 +17,14 @@
 				class="layui-icon">&#xe608;</i>推荐主题添加
 			</a>
 		</blockquote>
+	
+		<div class="layui-input-block">
+		<?php if(is_array($classifies)): foreach($classifies as $key=>$id): if($id['id'] == $cid): ?><a href="javascript:;" class="layui-btn layui-btn-normal layui-btn-mini"><?php echo ($id["name"]); ?></a>
+			<?php else: ?>
+			<a href="/admin/index/groom?cid=<?php echo ($id["id"]); ?>" class="layui-btn layui-btn-mini list_edit"><?php echo ($id["name"]); ?></a><?php endif; endforeach; endif; ?>
+
+		</div>
+			
 		<fieldset class="layui-elem-field">
 			<legend>数据列表</legend>
 			<div class="layui-field-box">
@@ -25,27 +32,38 @@
 					<thead>
 						<tr>
 							<th>名称</th>
-							<th>拼音</th>
-							<th>时间</th>
-							<th>排序</th>
+							<th>分类</th>
+							<th>作者</th>
+							<th>图片</th>
+							<th>链接</th>
+							<th>描述</th>
+							<th>发布时间</th>
 							<th>状态</th>
 							<th>操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php if(is_array($data["list"])): foreach($data["list"] as $key=>$id): ?><tr data="<?php echo ($id["id"]); ?>">
+						<?php if(is_array($data["list"])): foreach($data["list"] as $key=>$id): ?><tr>
+							<td><?php echo ($id["title"]); ?></td>
 							<td><?php echo ($id["name"]); ?></td>
-							<td><?php echo ($id["pinyin"]); ?></td>
-							<td><?php echo (date("Y-m-d H:i:s",$id["add_time"])); ?></td>
-							<td><?php echo ($id["sort"]); ?></td>
+							<td><?php echo ($id["author_name"]); ?></td>
+							<td>
+							<?php if($id['medium']): ?><img src="/<?php echo ($id['medium']); ?>" class="image_list" data="<?php echo ($id["image_id"]); ?>">
+							<?php elseif($id['image_address']): ?>
+								<img src="/<?php echo ($id['image_address']); ?>" class="image_list"><?php endif; ?>
+							</td>
+							<td><?php echo ($id["link"]); ?></td>
+							<td><?php echo ($id["description"]); ?></td>
+							<td><?php echo (date("Y-m-d H:i:s",$id["public_time"])); ?></td>
+						
 							<td>
 								<?php if($id['is_use']): ?><i class="layui-icon" data='1' style="color: green;"></i>
 								<?php else: ?>
 								<i class="layui-icon" data='0' style="color: red;">ဇ</i><?php endif; ?>
 							</td>
 							<td>
-							<a href="javascript:;" class="layui-btn layui-btn-mini list_edit">编辑</a>
-							<a href="javascript:;" data-id="<?php echo ($id["id"]); ?>" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
+							<a href="/admin/index/addgroom?id=<?php echo ($id["gid"]); ?>" class="layui-btn layui-btn-mini list_edit">编辑</a>
+							<a href="javascript:;" data-id="<?php echo ($id["gid"]); ?>" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
 							</td>
 						</tr><?php endforeach; endif; ?>
 					</tbody>
@@ -57,40 +75,7 @@
 			<div id="page" class="page"></div>
 		</div>
 	</div>
-	
-	<div style="margin: 15px;display:none;" id="addClassify">
-		<div style="margin: 15px;">
-			<form class="layui-form" action="/admin/index/classify" method='post'>
-				<div class="layui-form-item">
-					<label class="layui-form-label" style="width: 80px;">分类名称</label>
-					<div class="layui-input-block" style="margin-left: 110px;">
-						<input type="text" name="info[name]" autocomplete="off" placeholder="导航名称" lay-verify="required" class="layui-input" value="" id='classify_name'>
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<div class="layui-inline">
-						<label class="layui-form-label"  style="width: 80px;">排序</label>
-						<div class="layui-input-inline" style="width: 110px;">
-							<input type="text" name="info[sort]" autocomplete="off" class="layui-input" value='' id="classiify_sort">
-						</div>
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label" style="width: 80px;">是否启用</label>
-					<div class="layui-input-block" style="margin-left: 110px;">
-						<input type="checkbox" checked="" name="info[is_use]" value='1' lay-skin="switch" lay-text="开启|关闭"  id='classify_is_use'>
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<div class="layui-input-block">
-						<input type="hidden" name="info[id]" value='' id="classify_id">
-						<button class="layui-btn" lay-submit="" lay-filter="add">立即提交</button>
-						<button type="reset" class="layui-btn layui-btn-primary" id="reset_btn" >重置</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		</div>
+
 	<script type="text/javascript" src="/Public/static/admin/plugins/layui/layui.js"></script>
 	<script>
 			layui.config({
@@ -100,7 +85,7 @@
 				var $ = layui.jquery,
 					laypage = layui.laypage,
 					layer = parent.layer === undefined ? layui.layer : parent.layer;
-				var form = layui.form(), layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
+					
 				if ("<?php echo ($message); ?>") {
 					layer.msg("<?php echo ($message); ?>");
 				}
@@ -115,7 +100,7 @@
 						//得到了当前页，用于向服务端请求对应数据
 						var curr = obj.curr;
 						if(!first) {
-							window.location.href="/admin/system/menu?page="+curr;
+							window.location.href="/admin/index/groom?page="+curr;
 						}
 					}
 				});
@@ -125,7 +110,7 @@
 					var This = $(this);
 					layer.confirm("你确定删除"+menu_name, {icon: 3, title:'提示信息'}, function(index){
 						  $.ajax({
-							  url:"/admin/index/delclassify",
+							  url:"/admin/index/delgroom",
 							  type:"post",
 							  data:{'id':id},
 							  dataType:"JSON",

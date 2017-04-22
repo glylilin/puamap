@@ -48,5 +48,12 @@ class ClassifyModel extends Model{
     public function getClassifyPageInfo($page,$pagesize){
        return $this->where(array('is_del'=>0))->order('sort asc,id desc')->page($page,$pagesize)->select();
     }
+    /**
+     * 获取可用的分类
+     */
+    public  function  getUsedList(){
+        return $this->where(array('is_use'=>1,'is_del'=>0))->order('sort asc,id desc')->select();
+    }
+    
     
 }
