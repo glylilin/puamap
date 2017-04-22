@@ -32,6 +32,12 @@
 					<input type="text" name="info[images_ratio]" autocomplete="off" placeholder="图片宽高比" class="layui-input" lay-verify="required" value="<?php echo C('IMAGES_RATIO');?>">
 				</div>
 			</div>
+				<div class="layui-form-item">
+				<label class="layui-form-label">专辑图片宽高比(SPECIAL_IMAGES_RATIO)</label>
+				<div class="layui-input-block">
+					<input type="text" name="info[special_images_ratio]" autocomplete="off" placeholder="图片宽高比" class="layui-input" lay-verify="required" value="<?php echo C('SPECIAL_IMAGES_RATIO');?>">
+				</div>
+			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">图片大小(IMAGES_SIZE)单位M</label>
 				<div class="layui-input-block">

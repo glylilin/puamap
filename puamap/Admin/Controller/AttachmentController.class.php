@@ -8,6 +8,7 @@ namespace Admin\Controller;
 class AttachmentController extends BaseController{
     public function uploadBanner(){
         $res['status'] = false;
+        $type = I('get.type',0,'intval');
         if(!isset($_FILES['file']) || empty($_FILES['file'])){
            $res['message'] = L('PLEASE_UPLOAD_PICTURES'); 
         }else{
@@ -19,7 +20,7 @@ class AttachmentController extends BaseController{
             $upload->replace = true;//同名覆盖
             $upload->autoSub = true;//自动创建子目录
             if($info = $upload->upload()){
-                $res = $this->formatWidthHeight($info['file']);
+                $res = $this->formatWidthHeight($info['file'],$type);
             }else{
                 $res['message'] = $upload->getError();
             }
@@ -30,16 +31,17 @@ class AttachmentController extends BaseController{
      * 图片宽高限制
      * @param unknown $file
      */
-    public function formatWidthHeight($file){
+    public function formatWidthHeight($file,$type){
         $filePath = C("UPLOAD_DIR").$file['savepath'].$file['savename'];
         if(!file_exists($filePath)){
             return array('status'=>false,'message'=>L("PICTURE_DOES_NOT_EXIST"));
         }
 
         $res['status'] = true;
-        if(C("IMAGES_RATIO")){
+        $image_ratio = $type ? C("SPECIAL_IMAGES_RATIO") : C("IMAGES_RATIO");
+        if($image_ratio){
         	list($width,$height)= getimagesize($filePath);
-        	list($radio_width,$radio_height) = explode(":",C("IMAGES_RATIO"));
+        	list($radio_width,$radio_height) = explode(":",$image_ratio);
         	$real_radio = $width / $height;
         	$radio_radio = $radio_width / $radio_height;
         	if($real_radio > $radio_radio && (($width - $height * $radio_radio) > 10)){

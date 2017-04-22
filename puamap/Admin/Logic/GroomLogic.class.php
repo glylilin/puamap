@@ -69,8 +69,7 @@ class GroomLogic extends  ViewModel{
      * @return unknown
      */
     public function getGroomInfoById($id){
-        $data[0] = $this->where(array('gid'=>$id))->find();
-        $result = formatLogicImage($data);
-        return $result[0];
+        $data = $this->where(array('gid'=>$id))->find();
+        return formatLogicImage($data);
     }
 }

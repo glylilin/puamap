@@ -36,6 +36,11 @@ return array(
     'CLASSIFY_EXISIT'=>'分类已经存在',
     'TITLE_EXISIT'=>'标题已经存在',
     'DESCRIPTION_REQUIRED'=>"描述信息必须填写",
-    'TITLTE_REQUIRED'=>'标题必须填写'
+    'TITLTE_REQUIRED'=>'标题必须填写',
+    'MOVIE_NAME_REQUIRE'=>"视频名称必须填写",
+    'LINK_REQUIRE'=>'链接地址必须填写',
+    'MOVIE_TYPE_REQUIRE'=>'视频分类必须选择',
+    'MOVIE_LINK_EXISIT'=>"该视频已经被上传",
+    'MOVIE_NAME_EXISIT'=>"该视频名称已被占用"
     
 );

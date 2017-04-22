@@ -39,7 +39,13 @@
 			<div class="layui-form-item">
 					<label class="layui-form-label">图片上传(<{:C("IMAGES_RATIO")}>)</label>
 					<div class="site-demo-upload-mo" style="margin-left:190px;">
-					<img  id='lay-demo-upload-mo' src="/<{$info_data['medium']}>">
+					<div class="image_border">
+					<if condition="$info_data['medium']">
+					<img id='lay-demo-upload-mo' src="/<{$info_data['medium']}>" style="display:inline-block;">
+					<else/>
+					<img id='lay-demo-upload-mo' src="">
+					</if>
+					</div>
 					<input type="file" name="file" lay-ext="<{:C('IMAGES_ALLOWEXT')}>" lay-type="file" lay-title="请上传一张图片吧亲" class="layui-upload-file"> 
 					</div>
 			</div>

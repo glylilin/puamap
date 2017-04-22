@@ -3,7 +3,6 @@ namespace Admin\Model;
 use Think\Model\ViewModel;
 class BannerViewModel extends ViewModel{
     protected  $name= "banner";
- 
     protected  $viewFields  = array(
         'Banner'=>array('id'=>'bid','title','image_id','link','add_time','is_use','sort','_type'=>"LEFT"),
         "Attachment"=>array('image_address','id','_on'=>"Banner.image_id = Attachment.id")

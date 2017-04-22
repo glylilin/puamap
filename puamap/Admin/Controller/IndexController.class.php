@@ -131,6 +131,7 @@ class IndexController extends BaseController {
        if($gid){
            $groom_logic = D("Groom",'Logic');
            $info_data = $groom_logic->getGroomInfoById($gid);
+       
        }     
 
        $classify_model = D('Classify');

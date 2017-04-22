@@ -6,10 +6,10 @@ class BannerModel extends Model{
         array('add_time','time',1,'function')
     );
     protected $_validate = array(
-        array('title','require',"{%TITLE_REQUIRED}",3),
-        array('image_id','require',"{%IMAGE_UPLOAD_REQUIRED}",3),
-        array('link','require','{%URL_REQUIRE}',3),
-        array('link',"checkUrl","{%MENU_URL_FORMAT_ERROR}",3,'callback')
+        array('title','require',"{%TITLE_REQUIRED}"),
+        array('image_id','require',"{%IMAGE_UPLOAD_REQUIRED}"),
+        array('link','require','{%URL_REQUIRE}'),
+        array('link',"checkUrl","{%MENU_URL_FORMAT_ERROR}",2,'callback')
     );
     /**
      * url验证

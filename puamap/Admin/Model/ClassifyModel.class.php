@@ -3,13 +3,13 @@ namespace Admin\Model;
 use Think\Model;
 class ClassifyModel extends Model{
     protected $_validate = array(
-        array('name','require',"{%CLASSIFY_NAME_REQUIRED}",3),
+        array('name','require',"{%CLASSIFY_NAME_REQUIRED}"),
         array('name','checkExistsName',"{%CLASSIFY_EXISIT}",1,'callback'),
     );
     
     protected $_auto =array(
         array('add_time','time',1,'function'),
-        array('pinyin','fomartNameToPinYin',3,"callback")
+        array('pinyin','fomartNameToPinYin',3,"function")
     );
     public function checkExistsName($name){
         $params = I('post.info');
@@ -26,14 +26,7 @@ class ClassifyModel extends Model{
         return true;
     }
     
-    /**
-     * 通过名称获取拼音
-     */
-    public function fomartNameToPinYin(){
-        vendor('Vendor.PinYin',APP_PATH."admin");
-        $params = I("post.info",array());
-        return \Admin\Vendor\PinYin::utf8_to($params['name']);
-    }
+  
     /**
      * 統計总数
      */

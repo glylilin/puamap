@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>视频分类</title>
+<link rel="stylesheet" href="__APLUGINS__/layui/css/layui.css"
+	media="all" />
+<link rel="stylesheet" href="__ACSS__/global.css" media="all">
+<link rel="stylesheet" type="text/css"
+	href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" href="__ACSS__/table.css" />
+</head>
+<body>
+	<div class="admin-main">
+		<blockquote class="layui-elem-quote">
+			<a href="/admin/video/addmovie" class="layui-btn layui-btn-small"> <i
+				class="layui-icon">&#xe608;</i>添加视频
+			</a>
+		</blockquote>
+		<fieldset class="layui-elem-field">
+			<legend>数据列表</legend>
+			<div class="layui-field-box">
+				<table class="site-table table-hover">
+					<thead>
+						<tr>
+							<th>名称</th>
+							<th>分类</th>
+							<th>图片</th>
+							<th>地址</th>
+							<th>发布时间</th>
+							<th>播放时长</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<foreach name='data["list"]' item='id'>
+						<tr>
+							<td><{$id.movie_name}></td>
+							<td><{$id.name}></td>
+							<td>
+							<if condition="$id['medium']">
+							<img src="/<{$id['medium']}>" class="image_list" data="<{$id.image_id}>">
+							<elseif condition="$id['image_address']" />
+								<img src="/<{$id['image_address']}>" class="image_list">
+							</if>
+							</td>
+							<td><{$id.link}></td>
+							<td>
+								<{$id.pub_time}>
+							</td>
+							<td>
+								<{$id.send_time}>
+							</td>
+							<td>
+								<if condition="$id['is_use']">
+								<i class="layui-icon" data='1' style="color: green;"></i>
+								<else />
+								<i class="layui-icon" data='0' style="color: red;">ဇ</i>
+								</if>
+							</td>
+							<td>
+							<a href="/admin/video/addmovie?id=<{$id.vid}>" class="layui-btn layui-btn-mini list_edit">编辑</a>
+							<a href="javascript:;" data-id="<{$id.vid}>" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
+							</td>
+						</tr>
+						</foreach>
+					</tbody>
+				</table>
+
+			</div>
+		</fieldset>
+		<div class="admin-table-page">
+			<div id="page" class="page"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="__APLUGINS__/layui/layui.js"></script>
+	<script>
+			layui.config({
+				base: '__APLUGINS__/layui/modules/'
+			});
+			layui.use(['icheck', 'laypage','layer'], function() {
+				var $ = layui.jquery,
+					laypage = layui.laypage,
+					layer = parent.layer === undefined ? layui.layer : parent.layer;
+				//page
+				laypage({
+					cont: 'page',
+					pages: "<{$data.total}>" ,//总页数
+					groups: 5, //连续显示分页数
+					curr:"<{$page}>",
+					jump: function(obj, first) {
+						//得到了当前页，用于向服务端请求对应数据
+						var curr = obj.curr;
+						if(!first) {
+							window.location.href="/admin/index/groom?page="+curr;
+						}
+					}
+				});
+				$('.layui-btn-danger').on('click',function(){
+					var menu_name = $(this).parents('tr').find('td').eq(0).text();
+					var id = $(this).attr("data-id");
+					var This = $(this);
+					layer.confirm("你确定删除"+menu_name, {icon: 3, title:'提示信息'}, function(index){
+						  $.ajax({
+							  url:"/admin/video/delmovie",
+							  type:"post",
+							  data:{'id':id},
+							  dataType:"JSON",
+							  success:function(mes){
+								  if(mes.status){
+									  $(This).parents('tr').remove();
+								  }else{
+									  layer.msg(mes.message);
+								  }
+							  }
+						  });
+						  layer.close(index);
+					});
+				});
+			});
+		
+		</script>
+</body>
+</html>

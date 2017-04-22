@@ -1,5 +1,20 @@
-[ 2017-04-22T10:06:20+08:00 ] 127.0.0.1 /favicon.ico
+[ 2017-04-22T18:31:20+08:00 ] 127.0.0.1 /icheck.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000463s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000602s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000867s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001640s ]
+ERR: 无法加载控制器:Icheck
+
+[ 2017-04-22T18:31:29+08:00 ] 127.0.0.1 /images/0.jpg
 INFO: [ app_init ] --START--
 INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000021s ]
-INFO: [ app_init ] --END-- [ RunTime:0.000428s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000491s ]
+
+[ 2017-04-22T18:31:45+08:00 ] 127.0.0.1 /images/0.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000478s ]
 

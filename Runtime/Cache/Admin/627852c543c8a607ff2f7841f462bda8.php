@@ -78,7 +78,9 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label" style="width: 80px;">图片上传(<?php echo C("IMAGES_RATIO");?>)</label>
 					<div class="site-demo-upload-mo">
+					<div class="image_border">
 					<img  id='lay-demo-upload-mo'>
+					</div>
 					<input type="file" name="file" lay-ext="<?php echo C('IMAGES_ALLOWEXT');?>" lay-type="file" lay-title="请上传一张图片吧亲" class="layui-upload-file"> 
 					</div>
 				</div>
